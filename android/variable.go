@@ -20,6 +20,8 @@ import (
 	"runtime"
 	"strings"
 
+	"stormbreaker/soong/android"
+
 	"github.com/google/blueprint/proptools"
 )
 
@@ -132,6 +134,8 @@ type variableProperties struct {
 			Exclude_srcs []string `android:"arch_variant"`
 		} `android:"arch_variant"`
 	} `android:"arch_variant"`
+	// include stormbreaker variables
+	Stormbreaker android.Product_variables
 }
 
 var defaultProductVariables interface{} = variableProperties{}
@@ -336,6 +340,9 @@ type productVariables struct {
 	InstallExtraFlattenedApexes *bool `json:",omitempty"`
 
 	BoardUsesRecoveryAsBoot *bool `json:",omitempty"`
+
+	// include stormbreaker variables
+	Stormbreaker android.ProductVariables
 }
 
 func boolPtr(v bool) *bool {
